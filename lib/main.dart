@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'navigator/app_router.dart';
 
 void main() {
@@ -12,7 +13,10 @@ class ProductFeature extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Product Feature',
-      routerConfig: AppRouter.router,
+      routerConfig: GoRouter(
+      routes: ProductRouter.routes,
+      initialLocation: '/product',
+    ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             onTap: () {
-              context.go('/detail', extra: product);
+              context.go('/product/detail', extra: product);
             },
           );
         },

@@ -106,13 +106,6 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ],
             ),
-            const Spacer(),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => context.go('/'),
-                child: const Text('Back to Catalog'),
-              ),
-            ),
           ],
         ),
       ),
