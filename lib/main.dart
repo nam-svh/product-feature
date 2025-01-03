@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'navigator/app_router.dart';
 
 void main() {
   runApp(const ProductFeature());
@@ -9,13 +10,13 @@ class ProductFeature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Product feature',
+    return MaterialApp.router(
+      title: 'Product Feature',
+      routerConfig: AppRouter.router,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Product feature'),
     );
   }
 }
