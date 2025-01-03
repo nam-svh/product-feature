@@ -35,6 +35,19 @@ class ProductRepository {
     ),
   ];
 
+  int totalQuantity() {
+    return _products.fold(0, (total, product) => total + product.quantity);
+  }
+
+  double totalPrice() =>  _products.fold(0, (total, product) => total + (product.price * product.quantity));
+
+
+  double totalDiscount() => _products.fold(0, (total, product) => total + (product.price * product.quantity * 0.1));
+  
+
+  double totalAfterDiscount() => totalPrice() - totalDiscount();
+  
+
   List<Product> get products => _products;
 
   Product? getProductById(String id) {
