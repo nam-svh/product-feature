@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../repositories/product_repository.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   final ProductRepository _productRepository = ProductRepository();
 
   @override
@@ -38,10 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: const Icon(Icons.remove_circle_outline),
                         onPressed: () {
                           setState(() {
-                            _productRepository.updateProductQuantity(
-                              product.id, 
-                              product.quantity > 0 ? product.quantity - 1 : 0
-                            );
+                            _productRepository.updateProductQuantity(product.id, product.quantity > 0 ? product.quantity - 1 : 0);
                           });
                         },
                       ),
@@ -50,10 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: const Icon(Icons.add_circle_outline),
                         onPressed: () {
                           setState(() {
-                            _productRepository.updateProductQuantity(
-                              product.id, 
-                              product.quantity + 1
-                            );
+                            _productRepository.updateProductQuantity(product.id, product.quantity + 1);
                           });
                         },
                       ),
@@ -71,7 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ElevatedButton(
               child: const Text('Checkout'),
               onPressed: () {
-                context.go('/checkout');
+                context.go('/checkout', extra: {
+                  'totalQuantity': _productRepository.totalQuantity(),
+                  'totalPrice': _productRepository.totalPrice(),
+                  'totalDiscount': _productRepository.totalDiscount(),
+                  'totalAfterDiscount': _productRepository.totalAfterDiscount(),
+                });
               },
             ),
           ),

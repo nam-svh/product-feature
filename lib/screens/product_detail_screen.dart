@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../models/product.dart';
 import '../repositories/product_repository.dart';
 
-class DetailScreen extends StatefulWidget {
+class ProductDetailScreen extends StatefulWidget {
   final Product? product;
 
-  const DetailScreen({super.key, this.product});
+  const ProductDetailScreen({super.key, this.product});
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final ProductRepository _productRepository = ProductRepository();
+
   late Product? _currentProduct;
 
   @override
   void initState() {
     super.initState();
     // Fetch the product from repository to ensure we have the latest state
-    _currentProduct = widget.product != null 
-      ? _productRepository.getProductById(widget.product!.id) 
-      : null;
+    _currentProduct = widget.product != null ? _productRepository.getProductById(widget.product!.id) : null;
   }
 
   @override
@@ -80,10 +78,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   icon: const Icon(Icons.remove_circle_outline, size: 40),
                   onPressed: () {
                     setState(() {
-                      _productRepository.updateProductQuantity(
-                        _currentProduct!.id, 
-                        _currentProduct!.quantity > 0 ? _currentProduct!.quantity - 1 : 0
-                      );
+                      _productRepository.updateProductQuantity(_currentProduct!.id, _currentProduct!.quantity > 0 ? _currentProduct!.quantity - 1 : 0);
                     });
                   },
                 ),
@@ -97,10 +92,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   icon: const Icon(Icons.add_circle_outline, size: 40),
                   onPressed: () {
                     setState(() {
-                      _productRepository.updateProductQuantity(
-                        _currentProduct!.id, 
-                        _currentProduct!.quantity + 1
-                      );
+                      _productRepository.updateProductQuantity(_currentProduct!.id, _currentProduct!.quantity + 1);
                     });
                   },
                 ),
