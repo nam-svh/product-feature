@@ -4,7 +4,8 @@ import 'package:share_models/modes/checkout_infor.dart';
 import '../repositories/product_repository.dart';
 
 class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key});
+  final bool fromCheckOutScreen;
+  const CategoryScreen({super.key,this.fromCheckOutScreen = false});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -61,7 +62,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               },
             ),
           ),
-          Container(
+          if(!widget.fromCheckOutScreen) Container(
             margin: const EdgeInsets.only(bottom: 32.0),
             child: ElevatedButton(
               child: const Text('Checkout'),
