@@ -8,6 +8,7 @@ class ProductRouter {
         GoRoute(
           path: '/product',
           builder: (context, state) => const CategoryScreen(),
+          
         ),
         GoRoute(
           path: '/product/detail',

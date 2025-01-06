@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../models/checkout_infor.dart';
 import '../repositories/product_repository.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -65,12 +66,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
             child: ElevatedButton(
               child: const Text('Checkout'),
               onPressed: () {
-                context.go('/checkout', extra: {
-                  'totalQuantity': _productRepository.totalQuantity(),
-                  'totalPrice': _productRepository.totalPrice(),
-                  'totalDiscount': _productRepository.totalDiscount(),
-                  'totalAfterDiscount': _productRepository.totalAfterDiscount(),
-                });
+                context.go('/checkout', extra: CheckoutInfor(
+                  totalQuantity: _productRepository.totalQuantity(),
+                  totalPrice: _productRepository.totalPrice(),
+                  totalDiscount: _productRepository.totalDiscount(),
+                  totalAfterDiscount: _productRepository.totalAfterDiscount(),
+                ));
               },
             ),
           ),
