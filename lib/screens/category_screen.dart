@@ -66,12 +66,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
             child: ElevatedButton(
               child: const Text('Checkout'),
               onPressed: () {
-                context.go('/checkout', extra: CheckoutInfor(
+                final checkOutInfor = CheckoutInfor(
                   totalQuantity: _productRepository.totalQuantity(),
                   totalPrice: _productRepository.totalPrice(),
                   totalDiscount: _productRepository.totalDiscount(),
                   totalAfterDiscount: _productRepository.totalAfterDiscount(),
-                ));
+                );
+                debugPrint(checkOutInfor.toString());
+                context.go('/checkout', extra: checkOutInfor);
               },
             ),
           ),
