@@ -72,7 +72,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   totalDiscount: _productRepository.totalDiscount(),
                   totalAfterDiscount: _productRepository.totalAfterDiscount(),
                 );
-                debugPrint(checkOutInfor.toString());
+                debugPrint('Product featute  $checkOutInfor');
                 context.go('/checkout', extra: checkOutInfor);
               },
             ),
