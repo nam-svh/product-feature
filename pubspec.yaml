@@ -35,6 +35,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   go_router: ^13.0.0
+  share_models:
+    git:
+      url: https://github.com/nam-svh/share_models.git
+      ref: main
 
 dev_dependencies:
   flutter_test:

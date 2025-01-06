@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../models/checkout_infor.dart';
+import 'package:share_models/modes/checkout_infor.dart';
 import '../repositories/product_repository.dart';
 
 class CategoryScreen extends StatefulWidget {
